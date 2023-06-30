@@ -1,0 +1,40 @@
+.course{
+    display: flex;
+    align-items: center;
+    padding: .5rem 1rem;
+    font-size: 18px;
+    background-color: #F7F6F3;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.course:hover{
+    background-color: #efe;
+}
+.inputText{
+    padding: .5rem 0;
+    border: none !important;
+    outline: none !important;
+    width: 90% !important;
+    background-color: transparent;
+}
+.inputText:focus{
+    border: none;
+}
+.inputText:active{
+    border: none;
+}
+.it:nth-of-type(1){
+    width: 10%;
+}
+.it:nth-of-type(2){
+    width: 25%;
+}
+.it:nth-of-type(3){
+    width: 20%;
+}
+.it:nth-of-type(4){
+    width: 20%;
+}
+.it:nth-of-type(5){
+    width: 25%;
+}

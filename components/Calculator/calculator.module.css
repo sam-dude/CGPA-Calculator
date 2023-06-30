@@ -1,0 +1,74 @@
+.calculator{
+    padding: 1rem 0;
+    padding-top: 0;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 80%;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid #eee;
+}
+.title{
+    display: flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    font-size: 18px;
+    color: #888;
+}
+.til:nth-of-type(1){
+    width: 10%;
+}
+.til:nth-of-type(2){
+    width: 25%;
+}
+.til:nth-of-type(3){
+    width: 20%;
+}
+.til:nth-of-type(4){
+    width: 20%;
+}
+.til:nth-of-type(5){
+    width: 25%;
+}
+
+.courses{
+    padding: 0 1.5rem;
+}
+
+.gp{
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.addCourse, .addSemes{
+    padding: .5rem .8rem;
+    color: #5C8179;
+    border: 2px solid #5C8179;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    width: max-content;
+}
+
+
+.addSem{
+    padding: 1.2rem 2.5rem;
+    
+    border-top: 1px solid #eee;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+    .calculator{
+        width: 100%;
+    }
+}
