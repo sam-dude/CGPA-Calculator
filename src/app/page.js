@@ -1,12 +1,16 @@
 "use client"
+import { useContext } from 'react'
 import styles from './page.module.css'
 import {motion as m} from "framer-motion"
 import Head from 'next/head'
 import headImg from '../../public/heade.png'
 import Image from 'next/image'
 import Calculator from '@/components/Calculator/Calculator'
+import { ResultContext } from '@/src/context/ResultContext'
 
 export default function Home() {
+  const {courses} = useContext(ResultContext);
+  
   return (
     <main className={styles.container}>
       <div className={styles.bg}></div>
@@ -21,7 +25,13 @@ export default function Home() {
       </div>
       
       <div className={styles.cal}>
-        <Calculator />
+        <div className={styles.semesters}>
+          {
+          courses.map(item => (
+            <div key={item.id}><Calculator item={item.semester}/></div>
+          ))
+        }
+        </div>
         <div className={styles.howTo}>
           <h2 className={styles.h2}>Using the GPA Calculator</h2>
           <br />

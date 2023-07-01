@@ -80,11 +80,14 @@
 
 .cal{
     display: flex;
-    align-items: center;
-
+    align-items: start;
+    justify-content: space-around;
 }
 .cal:nth-child(1){
     width: 75%;
+}
+.semesters{
+    width: 100%;
 }
 .howTo{
     background-color: #fff;
@@ -94,6 +97,7 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     width: 25%;
+    margin-top: 6rem;
 }
 @keyframes move {
     from{
