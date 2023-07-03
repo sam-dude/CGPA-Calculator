@@ -4,24 +4,22 @@ import { useContext, useState } from 'react'
 import styles from './calculator.module.css'
 import Course from '../Course/Course'
 import Navbar from '../Navbar/Navbar'
-import { ToggleSwitch } from 'flowbite-react';
-import ToggleSwitchElement from '../Toogle/Toggle'
+// import { ToggleSwitch } from 'flowbite-react';
+// import ToggleSwitchElement from '../Toogle/Toggle'
 import { ResultContext } from '@/src/context/ResultContext'
+import Toggle from '../Toogle/Toggle'
 
-export default function Calculator({item}){
+export default function Calculator({item, id, index,}){
    
-    const {courses, handleAddSemester} = useContext(ResultContext)
+    const {courses, handleAddSemester, handleAddCourse} = useContext(ResultContext);
 
     return(
         <div className={styles.calculator}>
             <div className={styles.header}>
-                <div className={styles.semester}>Semester {item.id}</div>
+                <div className={styles.semester}>Semester {index + 1}</div>
                 <div className={styles.leftHead}>
                     <div className={styles.weigth} id="toggle" style={{display: 'flex'}}>
-                    <ToggleSwitch
-                        // label="Toggle me"
-                        
-                    />
+                    <Toggle />
                         Weighted
                     </div>
                     {/* <ToggleSwitchElement /> */}
@@ -39,17 +37,17 @@ export default function Calculator({item}){
             
             <div className={styles.courses}>
                 {
-                    item.map((course) => (
+                    item.map((course, index) => (
                         
                         <div key={course.id}>
-                            <Course num={course.id} />
+                            <Course i={index}/>
                         </div>
                     ))
                 }
             </div>
             <div className={styles.gp}>
-                <div className={styles.gpa}>Semester 1 GPA: 0.00</div>
-                <div className={styles.addCourse}>Add Course</div>
+                <div className={styles.gpa}>Semester {index + 1} GPA: 0.00</div>
+                <div className={styles.addCourse} onClick={async () => {await handleAddCourse(id)}}>Add Course</div>
             </div>
             <div className={styles.addSem}>
                 <div className={styles.addSemes} onClick={handleAddSemester}>Add Semester</div>

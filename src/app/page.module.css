@@ -48,6 +48,11 @@
     font-size: 24px;
     font-weight: 300;
 } */
+.toast{
+    position: fixed;
+    padding: 0 8%;
+}
+
 .intoHeading{
     font-size: 1.5rem;
     font-weight: 600;
@@ -80,7 +85,7 @@
 
 .cal{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-around;
 }
 .cal:nth-child(1){

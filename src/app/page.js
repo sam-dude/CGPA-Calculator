@@ -7,12 +7,17 @@ import headImg from '../../public/heade.png'
 import Image from 'next/image'
 import Calculator from '@/components/Calculator/Calculator'
 import { ResultContext } from '@/src/context/ResultContext'
+import DefaultToast from '@/components/DefaultToast'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const {courses} = useContext(ResultContext);
   
   return (
+    
     <main className={styles.container}>
+      <div className={styles.toast}><ToastContainer position="top-center" className="z-30" styles={{zIndex: 3}}/></div>
       <div className={styles.bg}></div>
       <div className={styles.intro}>
         <div className={styles.item}>
@@ -27,8 +32,8 @@ export default function Home() {
       <div className={styles.cal}>
         <div className={styles.semesters}>
           {
-          courses.map(item => (
-            <div key={item.id}><Calculator item={item.semester}/></div>
+          courses.map((item, index) => (
+            <div key={item.id}><Calculator item={item.semester} id={item.id} index={index}/></div>
           ))
         }
         </div>
