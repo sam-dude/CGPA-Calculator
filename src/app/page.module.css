@@ -35,15 +35,6 @@
     animation: move 3s infinite ease alternate;
 }
 
-@keyframes move {
-    from{
-        transform: translateY(-10px);
-    }
-    to{
-        transform: translateY(10px) ;
-    }
-}
-
 .desc{
     font-size: 24px;
     font-weight: 300;
@@ -51,10 +42,11 @@
 .toast{
     position: fixed;
     padding: 0 8%;
+    z-index: 100;
 }
 
 .intoHeading{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 .intro{
@@ -103,6 +95,7 @@
     border-bottom-right-radius: 5px;
     width: 25%;
     margin-top: 6rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 @keyframes move {
     from{

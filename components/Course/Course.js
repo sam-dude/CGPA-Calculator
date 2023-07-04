@@ -7,13 +7,13 @@ import styles from './course.module.css'
 export default function Course({ i}){
 
     const handleChange = () =>{
-        console.log('')
+        console.log()
     }
     return(
         <div className={styles.course} >
             <div className={styles.it}>{i + 1}</div>
             <div className={styles.it}>
-                <input type="text" onChange={handleChange} className={styles.inputText} placeholder='Eg. Data Science'/>
+                <input type="text" onChange={handleChange} className={styles.inputText} placeholder='Eg. Data Science' required/>
             </div>
 
             <div className={styles.it}>

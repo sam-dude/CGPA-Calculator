@@ -1,5 +1,4 @@
 "use client"
-
 import { createContext, useState } from "react";
 import { toast } from 'react-toastify'
 
@@ -19,6 +18,10 @@ export const ResultProvider = ({children}) => {
     ])
 
     const singleCourse = {id: 9, name: '', grade: '', credits: '', type: ''};
+
+    //define click counters
+    let [clickCounter, setClickCounter] = useState(2);
+
     const semester = {
         semester: [
             {id: 1, name: '', grade: '', credits: '', type: ''},
@@ -27,15 +30,19 @@ export const ResultProvider = ({children}) => {
             {id: 4, name: '', grade: '', credits: '', type: ''},
             {id: 5, name: '', grade: '', credits: '', type: ''},
         ],
-        id: 3
+        id: clickCounter
     }
 
+    
     //TOASTS
     const showToast = () => {
-        toast.success('New Semester Added!🚀');
+        toast.success('New Semester Added! 🚀');
       };
       const showErrorToast = () => {
         toast.error('Limit reached');
+      }
+      const showRemoveSemesterToast = () =>{
+        toast.warn('Semester Removed')
       }
 
     //EVENTS HANDLERS
@@ -43,32 +50,52 @@ export const ResultProvider = ({children}) => {
         if(courses.length > 11){
            showErrorToast()
         }else{
+            setClickCounter(clickCounter += 1 );
             setCourses( [...courses, semester]);
             showToast()
         }
-        
-    }
-    const handleAddCourse = async (id) => {
-        courses.map(item => {
-            // item.semester.push(singleCourse)
-            //define clicked item
-            if (item.id === id) {
-                var clickedItem = item 
-            }
-            
-            console.log(clickedItem)
-            
-        
-        })
-        let clickedItem = courses.filter()
-        // console.log(clickedItem)
-        
     }
 
+    const handleAddCourse = async (id) => {
+        //define clicked item
+        let clickedItem = courses
+            .filter(course => course.id === id)
+        
+        //define unClicked items
+        let unClickedItems = courses.filter(course => course.id !== id);
+
+        //push a new course field to the displayed list
+        clickedItem.forEach(item => item.semester.push(singleCourse))
+
+        // log clicked item
+        console.log( [...unClickedItems, ...clickedItem]);
+
+        //update the displayed course list
+        setCourses( [...unClickedItems, ...clickedItem]);
+    }
+
+    //handle remove semester function
+    const handleRemoveSemester = (id) => {
+        //define clicked item
+        let clickedItem = courses
+            .filter(course => course.id === id)
+        
+        //filter semesters without the clicked
+        let filterSemester = courses.filter(item => item.id !== clickedItem[0].id)
+
+        //remove clicked item from the list
+        showRemoveSemesterToast()
+        setCourses(filterSemester)  
+    }
+
+    //handle reomve course field
+    const handleRemoveCourse = () => {
+        
+    }
 
     return(
 
-        <ResultContext.Provider value={{courses, setCourses, handleAddSemester, handleAddCourse}}>
+        <ResultContext.Provider value={{courses, setCourses, handleAddSemester, handleAddCourse, handleRemoveSemester}}>
             {children}
         </ResultContext.Provider>
     )

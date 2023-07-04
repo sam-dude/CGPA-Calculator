@@ -66,6 +66,16 @@
     
     border-top: 1px solid #eee;
 }
+.leftHead{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.close{
+    color: red;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
 
 /* RESPONSIVENESS */
 @media (max-width: 768px) {

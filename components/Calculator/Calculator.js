@@ -8,22 +8,24 @@ import Navbar from '../Navbar/Navbar'
 // import ToggleSwitchElement from '../Toogle/Toggle'
 import { ResultContext } from '@/src/context/ResultContext'
 import Toggle from '../Toogle/Toggle'
+import { FaClock, FaTimesCircle } from 'react-icons/fa'
 
 export default function Calculator({item, id, index,}){
    
-    const {courses, handleAddSemester, handleAddCourse} = useContext(ResultContext);
+    const {courses, handleAddSemester, handleAddCourse, handleRemoveSemester} = useContext(ResultContext);
 
     return(
         <div className={styles.calculator}>
             <div className={styles.header}>
                 <div className={styles.semester}>Semester {index + 1}</div>
                 <div className={styles.leftHead}>
-                    <div className={styles.weigth} id="toggle" style={{display: 'flex'}}>
+                    {index + 1 === 1 ? <div className={styles.weigth} id="toggle" style={{display: 'flex'}}>
                     <Toggle />
                         Weighted
-                    </div>
+                    </div> : <div className={styles.close} onClick={async () => {await handleRemoveSemester(id)}}><FaTimesCircle/></div>}
+                    
                     {/* <ToggleSwitchElement /> */}
-                    <div className={styles.close}></div>
+                    
                 </div>
             </div>
 

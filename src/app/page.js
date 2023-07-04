@@ -17,7 +17,7 @@ export default function Home() {
   return (
     
     <main className={styles.container}>
-      <div className={styles.toast}><ToastContainer position="top-center" className="z-30" styles={{zIndex: 3}}/></div>
+      <div className={styles.toast} tyles={{zIndex: 3}}><ToastContainer position="top-center" className="z-30" /></div>
       <div className={styles.bg}></div>
       <div className={styles.intro}>
         <div className={styles.item}>
@@ -32,7 +32,9 @@ export default function Home() {
       <div className={styles.cal}>
         <div className={styles.semesters}>
           {
-          courses.map((item, index) => (
+          courses
+          .sort((a, b) => a.id > b.id ? 1 : -1 )
+          .map((item, index) =>(
             <div key={item.id}><Calculator item={item.semester} id={item.id} index={index}/></div>
           ))
         }
