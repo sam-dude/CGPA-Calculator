@@ -115,6 +115,13 @@
         width: 100%;
     }
     .howTo{
-        width: 90%;
+        width: 100%;
+    }
+    .intro{
+        flex-direction: column;
+        height: auto;
+    }
+    .headImg{
+        padding-top: 1rem;
     }
 }
