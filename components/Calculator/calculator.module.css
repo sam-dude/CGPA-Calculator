@@ -82,4 +82,10 @@
     .calculator{
         width: 100%;
     }
+    .title{
+        display: none;
+    }
+    .gp{
+        flex-wrap: wrap;
+    }
 }

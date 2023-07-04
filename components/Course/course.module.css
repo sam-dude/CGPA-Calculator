@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     padding: .5rem 1rem;
-    font-size: 18px;
+    font-size: 20px;
     background-color: #F7F6F3;
     border-radius: 5px;
     margin-top: 10px;
@@ -10,6 +10,30 @@
 .course:hover{
     background-color: #efe;
 }
+.it:nth-of-type(6){
+    display: none;
+    width: 5%;
+    font-size: 22px;
+    cursor: pointer;
+}
+.course:hover .it:nth-of-type(6){
+    display: flex;
+    justify-content: center;
+    animation: show ease-in .2s;
+}
+
+@keyframes show {
+    0%{
+        transform: scale(0);
+    }
+    70%{
+        transform: scale(1.2) ;
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
 .inputText{
     padding: .5rem 0;
     border: none !important;
@@ -28,6 +52,7 @@
 }
 .it:nth-of-type(2){
     width: 25%;
+    border-radius: 5px;
 }
 .it:nth-of-type(3){
     width: 20%;
@@ -36,5 +61,34 @@
     width: 20%;
 }
 .it:nth-of-type(5){
-    width: 25%;
+    width: 20%;
+}
+
+@media (max-width: 768px) {
+    .course{
+        flex-wrap: wrap;
+    }
+    .it:nth-of-type(1){
+        width: 10%;
+    }
+    .it:nth-of-type(2){
+        width: 90%;
+    }
+    .it:nth-of-type(2),
+    .it:nth-of-type(1){
+        margin-bottom: .5rem;
+    }
+    .it:nth-of-type(3){
+        width: 30%;
+    }
+    .it:nth-of-type(4){
+        width: 30%;
+    }
+    .it:nth-of-type(5){
+        width: 30%;
+    }
+    .it:nth-of-type(6){
+        width: 10%;
+        
+    }
 }

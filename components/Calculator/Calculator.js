@@ -42,7 +42,7 @@ export default function Calculator({item, id, index,}){
                     item.map((course, index) => (
                         
                         <div key={course.id}>
-                            <Course i={index}/>
+                            <Course i={index} id={course.id} parentId={id}/>
                         </div>
                     ))
                 }

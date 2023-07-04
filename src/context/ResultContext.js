@@ -89,13 +89,31 @@ export const ResultProvider = ({children}) => {
     }
 
     //handle reomve course field
-    const handleRemoveCourse = () => {
-        
+    const handleRemoveCourse = (id, parentId) => {
+        //define clicked parent item
+        let clickedParentItem = courses
+            .filter(course => course.id === parentId)
+
+        let filteredItem = clickedParentItem[0].semester.filter(item => item.id !== id)
+        console.log(filteredItem);
+
+        //define unClicked parent items
+        let unClickedItems = courses.filter(course => course.id !== parentId);
+
+        console.log({semester: filteredItem, id: parentId})
+        setCourses([...unClickedItems, {semester: filteredItem, id: parentId}])
     }
 
     return(
 
-        <ResultContext.Provider value={{courses, setCourses, handleAddSemester, handleAddCourse, handleRemoveSemester}}>
+        <ResultContext.Provider value={{
+            courses, 
+            setCourses, 
+            handleAddSemester, 
+            handleAddCourse, 
+            handleRemoveSemester,
+            handleRemoveCourse
+        }}>
             {children}
         </ResultContext.Provider>
     )

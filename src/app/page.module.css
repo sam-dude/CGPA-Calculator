@@ -13,7 +13,7 @@
     position: absolute;
     height: 80vh;
     width: 100vw;
-    background-color: #bbd6cd;
+    background-color: #aaf5dc;
     z-index: -1;
     top: 0;
     left: 0;
@@ -120,8 +120,18 @@
     .intro{
         flex-direction: column;
         height: auto;
+        gap: 10px;
     }
-    .headImg{
+    .img{
         padding-top: 1rem;
+        transform: translateY(-30px) !important;
+        z-index: 3;
+    }
+    .toast{
+        padding: 8% !important;
+        width: max-content !important;
+    }
+    .cal{
+        transform: translateY(-60px);
     }
 }

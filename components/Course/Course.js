@@ -3,8 +3,12 @@
 import { Dropdown } from 'flowbite-react';
 import { Select } from 'flowbite-react';
 import styles from './course.module.css'
+import { FaTimesCircle } from 'react-icons/fa';
+import { ResultContext } from '@/src/context/ResultContext'
+import { useContext } from 'react';
 
-export default function Course({ i}){
+export default function Course({ i, id, parentId }){
+    const {handleRemoveCourse} = useContext(ResultContext);
 
     const handleChange = () =>{
         console.log()
@@ -13,7 +17,7 @@ export default function Course({ i}){
         <div className={styles.course} >
             <div className={styles.it}>{i + 1}</div>
             <div className={styles.it}>
-                <input type="text" onChange={handleChange} className={styles.inputText} placeholder='Eg. Data Science' required/>
+                <input type="text" onChange={handleChange} className={styles.inputText} placeholder='Course Name' required/>
             </div>
 
             <div className={styles.it}>
@@ -76,33 +80,34 @@ export default function Course({ i}){
             </div>
             </div>
             <div className={styles.it}>
-            <div
-                // className="w-20"
-                styles={{width: '12px'}}
-                id="courseTyp"
-            >
-    
-            <Select
-                id="courseType"
-                required
-                style={{boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px', border: 'none'}}
-            >
-                <option>
-                Regular
-                </option>
-                <option>
-                Restricted Elective
-                </option>
-                <option>
-                Special Elective
-                </option>
-                <option>
-                AP
-                </option>
-                
-            </Select>
-        </div>
+                <div
+                    // className="w-20"
+                    styles={{width: '12px'}}
+                    id="courseTyp"
+                >
+        
+                    <Select
+                        id="courseType"
+                        required
+                        style={{boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px', border: 'none'}}
+                    >
+                        <option>
+                        Regular
+                        </option>
+                        <option>
+                        Restricted Elective
+                        </option>
+                        <option>
+                        Special Elective
+                        </option>
+                        <option>
+                        AP
+                        </option>
+                        
+                    </Select>
+                </div>
             </div>
+            <div className={styles.it} onClick={async () => {await handleRemoveCourse(id, parentId)}}><FaTimesCircle/></div>
         </div>
     )
 }

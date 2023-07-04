@@ -17,7 +17,7 @@ export default function Home() {
   return (
     
     <main className={styles.container}>
-      <div className={styles.toast} tyles={{zIndex: 3}}><ToastContainer position="top-center" className="z-30" /></div>
+      <div className={styles.toast} tyles={{zIndex: 3}}><ToastContainer position="top-center" className="z-30" autoClose={1500} /></div>
       <div className={styles.bg}></div>
       <div className={styles.intro}>
         <div className={styles.item}>
