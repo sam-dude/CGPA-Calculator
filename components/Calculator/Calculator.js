@@ -22,7 +22,7 @@ export default function Calculator({item, id, index,}){
                     {index + 1 === 1 ? <div className={styles.weigth} id="toggle" style={{display: 'flex'}}>
                     <Toggle />
                         Weighted
-                    </div> : <div className={styles.close} onClick={async () => {await handleRemoveSemester(id)}}><FaTimesCircle/></div>}
+                    </div> : <div className={styles.close} onClick={async () => {await handleRemoveSemester(id)}} name="Close"><FaTimesCircle/></div>}
                     
                     {/* <ToggleSwitchElement /> */}
                     

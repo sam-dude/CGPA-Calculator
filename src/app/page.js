@@ -25,7 +25,7 @@ export default function Home() {
           <p className={styles.p}>Calculate your Semester GPA, Cummulative GPA and check how much you need to cross that lengedary GPA mark.</p>
         </div>
         <div className={styles.item}>
-          <Image src={headImg} alt="hero" className={styles.img}/>
+          <Image src={headImg} alt="a boy using devices" className={styles.img}/>
         </div>
       </div>
       
