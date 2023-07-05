@@ -12,9 +12,10 @@
 }
 .it:nth-of-type(6){
     display: none;
-    width: 5%;
+    width: 6%;
     font-size: 22px;
     cursor: pointer;
+    color:purple;
 }
 .course:hover .it:nth-of-type(6){
     display: flex;

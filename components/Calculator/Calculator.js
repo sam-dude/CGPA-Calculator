@@ -33,7 +33,7 @@ export default function Calculator({item, id, index,}){
                 <div className={styles.til}>#</div>
                 <div className={styles.til}>Course Name</div>
                 <div className={styles.til}>Grade</div>
-                <div className={styles.til}>Credits</div>
+                <div className={styles.til}>Credits/Units</div>
                 <div className={styles.til}>Course Type</div>
             </div>
             

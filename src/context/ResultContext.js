@@ -6,11 +6,11 @@ export const ResultContext = createContext()
 export const ResultProvider = ({children}) => {
     const [courses, setCourses] = useState([
         {semester: [
-            {id: 1, name: '', grade: '', credits: '', type: ''},
-            {id: 2, name: '', grade: '', credits: '', type: ''},
-            {id: 3, name: '', grade: '', credits: '', type: ''},
-            {id: 4, name: '', grade: '', credits: '', type: ''},
-            {id: 5, name: '', grade: '', credits: '', type: ''},
+            {id: 1, name: '', grade: 5, credits: 5, type: ''},
+            {id: 2, name: '', grade: 5, credits: 5, type: ''},
+            {id: 3, name: '', grade: 5, credits: 5, type: ''},
+            {id: 4, name: '', grade: 5, credits: 5, type: ''},
+            {id: 5, name:'', grade: 5, credits: 5, type: ''},
         ],
         id: 1
         },
@@ -24,11 +24,11 @@ export const ResultProvider = ({children}) => {
 
     const semester = {
         semester: [
-            {id: 1, name: '', grade: '', credits: '', type: ''},
-            {id: 2, name: '', grade: '', credits: '', type: ''},
-            {id: 3, name: '', grade: '', credits: '', type: ''},
-            {id: 4, name: '', grade: '', credits: '', type: ''},
-            {id: 5, name: '', grade: '', credits: '', type: ''},
+            {id: 1, name: '', grade: 5, credits: 5, type: ''},
+            {id: 2, name: '', grade: 5, credits: 5, type: ''},
+            {id: 3, name: '', grade: 5, credits: 5, type: ''},
+            {id: 4, name: '', grade: 5, credits: 5, type: ''},
+            {id: 5, name: '', grade: 5, credits: 5, type: ''},
         ],
         id: clickCounter
     }
@@ -49,6 +49,7 @@ export const ResultProvider = ({children}) => {
     const handleAddSemester = async () => {
         if(courses.length > 11){
            showErrorToast()
+           navigator.vibrate(200)
         }else{
             setClickCounter(clickCounter += 1 );
             setCourses( [...courses, semester]);
@@ -64,12 +65,12 @@ export const ResultProvider = ({children}) => {
         //define unClicked items
         let unClickedItems = courses.filter(course => course.id !== id);
 
-        let lastId = clickedItem.map(item => item.semester[item.semester.length - 1].id)
-
+        let lastId = clickedItem.map(item => item.semester.length > 0 ? item.semester[item.semester.length - 1].id : 1)
+        // let lastId = item.semester.length > 0 ? item.semester[item.semester.length - 1].id : 1;
 
 
         //push a new course field to the displayed list
-        clickedItem.forEach(item => item.semester.push({id: lastId[0] + 1, name: '', grade: '', credits: '', type: ''}))
+        clickedItem.forEach(item => item.semester.push({id: lastId[0] + 1, name: '', grade: 5, credits: 5, type: ''}))
 
         // log clicked item
         console.log( [...unClickedItems, ...clickedItem]);
