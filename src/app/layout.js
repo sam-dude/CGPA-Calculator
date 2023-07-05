@@ -2,7 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar/Navbar'
 import { ResultProvider } from '../context/ResultContext'
-import Footer from '@/components/Footer/Footer'
+import FooterWithLogo from '@/components/Footer/Footer'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <ResultProvider>
           <Navbar />
           {children}
-          <Footer />
+          <FooterWithLogo />
         </ResultProvider>
       </body>
     </html>

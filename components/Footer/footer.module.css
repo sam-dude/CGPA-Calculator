@@ -1,10 +1,20 @@
 .container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     text-align: center;
     width: 100%;
     padding: 2rem 8%; 
     background-color: #eee;
     margin-top: 2rem;
+}
+.logo{
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }

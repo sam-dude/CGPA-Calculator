@@ -64,10 +64,12 @@ export const ResultProvider = ({children}) => {
         //define unClicked items
         let unClickedItems = courses.filter(course => course.id !== id);
 
-        console.log(clickedItem.forEach(item => item.semester))
+        let lastId = clickedItem.map(item => item.semester[item.semester.length - 1].id)
+
+
 
         //push a new course field to the displayed list
-        clickedItem.forEach(item => item.semester.push({id: 9, name: '', grade: '', credits: '', type: ''}))
+        clickedItem.forEach(item => item.semester.push({id: lastId[0] + 1, name: '', grade: '', credits: '', type: ''}))
 
         // log clicked item
         console.log( [...unClickedItems, ...clickedItem]);
