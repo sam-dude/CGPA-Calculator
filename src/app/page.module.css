@@ -13,7 +13,7 @@
     position: absolute;
     height: 80vh;
     width: 100vw;
-    background-color: #aaf5dc;
+    background-color: #e5fcf5;
     z-index: -1;
     top: 0;
     left: 0;
@@ -46,7 +46,7 @@
 }
 
 .intoHeading{
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
 }
 .intro{
