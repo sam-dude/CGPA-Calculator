@@ -10,7 +10,7 @@ import { ResultContext } from '@/src/context/ResultContext'
 import Toggle from '../Toogle/Toggle'
 import { FaClock, FaTimesCircle } from 'react-icons/fa'
 
-export default function Calculator({item, id, index,}){
+export default function Calculator({item, id, index, gpa}){
    
     const {courses, handleAddSemester, handleAddCourse, handleRemoveSemester} = useContext(ResultContext);
 
@@ -22,7 +22,7 @@ export default function Calculator({item, id, index,}){
                     {index + 1 === 1 ? <div className={styles.weigth} id="toggle" style={{display: 'flex'}}>
                     <Toggle />
                         Weighted
-                    </div> : <div className={styles.close} onClick={async () => {await handleRemoveSemester(id)}} name="Close"><FaTimesCircle/></div>}
+                    </div> : <div className={styles.close} onClick={async () => {await handleRemoveSemester(id)}} name="Close">Close <FaTimesCircle className={styles.closeIcon}/></div>}
                     
                     {/* <ToggleSwitchElement /> */}
                     
@@ -48,7 +48,7 @@ export default function Calculator({item, id, index,}){
                 }
             </div>
             <div className={styles.gp}>
-                <div className={styles.gpa}>Semester {index + 1} GPA: 0.00</div>
+                <div className={styles.gpa}>Semester {index + 1} GPA: {parseFloat(gpa)}</div>
                 <div className={styles.addCourse} onClick={async () => {await handleAddCourse(id)}}>Add Course</div>
             </div>
             <div className={styles.addSem}>

@@ -8,7 +8,7 @@ import { ResultContext } from '@/src/context/ResultContext'
 import { useContext } from 'react';
 
 export default function Course({ i, id, parentId }){
-    const {handleRemoveCourse} = useContext(ResultContext);
+    const {handleRemoveCourse, handleGradeChange, handleUnitChange} = useContext(ResultContext);
 
     const handleChange = () =>{
         console.log()
@@ -30,21 +30,25 @@ export default function Course({ i, id, parentId }){
                 id="grades"
                 required
                 style={{boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px', border: 'none'}}
+                onChange={(e) => {handleGradeChange(e, id, parentId)}}
             >
-                <option>
+                <option value='0'>
+                Grade
+                </option>
+                <option value='5'>
                 A
                 </option>
-                <option>
+                <option value='4'>
                 B
                 </option>
-                <option>
+                <option value='3'>
                 C
                 </option>
-                <option>
+                <option value='2'>
                 D
                 </option>
-                <option value="">E</option>
-                <option value="">F</option>
+                <option value='1'>E</option>
+                <option value='0'>F</option>
                 
             </Select>
         </div>
@@ -60,8 +64,12 @@ export default function Course({ i, id, parentId }){
                     id="weights"
                     required
                     style={{boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px', border: 'none'}}
+                    onChange={(e) => {handleUnitChange(e, id, parentId)}}
                 >
-                    <option>
+                    <option value='0'>
+                    Unit
+                    </option>
+                    <option >
                     5
                     </option>
                     <option>
@@ -73,7 +81,7 @@ export default function Course({ i, id, parentId }){
                     <option>
                     2
                     </option>
-                    <option value="">1</option>
+                    <option >1</option>
                     
                     
                 </Select>

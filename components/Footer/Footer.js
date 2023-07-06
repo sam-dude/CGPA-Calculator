@@ -3,7 +3,7 @@
 import React from 'react'
 import styles from './footer.module.css'
 import { Footer } from 'flowbite-react';
-import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { BsFacebook, BsGithub, BsTwitter, BsLinkedin } from 'react-icons/bs';
 
 export default function FooterWithLogo() {
   return (
@@ -16,14 +16,14 @@ export default function FooterWithLogo() {
         />
         <Footer.Icon
           href="#"
-          icon={BsInstagram}
+          icon={BsLinkedin}
         />
         <Footer.Icon
           href="#"
           icon={BsTwitter}
         />
         <Footer.Icon
-          href="#"
+          href="https://github.com/sam-dude"
           icon={BsGithub}
         />
       </div>

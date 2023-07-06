@@ -35,7 +35,7 @@ export default function Home() {
           courses
           .sort((a, b) => a.id > b.id ? 1 : -1 )
           .map((item, index) =>(
-            <div key={item.id}><Calculator item={item.semester} id={item.id} index={index}/></div>
+            <div key={item.id}><Calculator item={item.semester} id={item.id} index={index} gpa={item.gpa}/></div>
           ))
         }
         </div>

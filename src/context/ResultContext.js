@@ -6,33 +6,37 @@ export const ResultContext = createContext()
 export const ResultProvider = ({children}) => {
     const [courses, setCourses] = useState([
         {semester: [
-            {id: 1, name: '', grade: 5, credits: 5, type: ''},
-            {id: 2, name: '', grade: 5, credits: 5, type: ''},
-            {id: 3, name: '', grade: 5, credits: 5, type: ''},
-            {id: 4, name: '', grade: 5, credits: 5, type: ''},
-            {id: 5, name:'', grade: 5, credits: 5, type: ''},
+            {id: 1, name: '', grade: 0, credits: 5, type: ''},
+            {id: 2, name: '', grade: 0, credits: 5, type: ''},
+            {id: 3, name: '', grade: 0, credits: 5, type: ''},
+            {id: 4, name: '', grade: 0, credits: 5, type: ''},
+            {id: 5, name:'', grade: 0, credits: 5, type: ''},
         ],
+        gpa: 0.00,
         id: 1
         },
 
     ])
 
-    const singleCourse = {id: 9, name: '', grade: '', credits: '', type: ''};
+    const singleCourse = {id: 9, name: '', grade: 0, credits: '', type: ''};
 
     //define click counters
     let [clickCounter, setClickCounter] = useState(2);
 
     const semester = {
         semester: [
-            {id: 1, name: '', grade: 5, credits: 5, type: ''},
-            {id: 2, name: '', grade: 5, credits: 5, type: ''},
-            {id: 3, name: '', grade: 5, credits: 5, type: ''},
-            {id: 4, name: '', grade: 5, credits: 5, type: ''},
-            {id: 5, name: '', grade: 5, credits: 5, type: ''},
+            {id: 1, name: '', grade: 0, credits: 5, type: ''},
+            {id: 2, name: '', grade: 0, credits: 5, type: ''},
+            {id: 3, name: '', grade: 0, credits: 5, type: ''},
+            {id: 4, name: '', grade: 0, credits: 5, type: ''},
+            {id: 5, name: '', grade: 0, credits: 5, type: ''},
         ],
+        gpa: 0.00,
         id: clickCounter
     }
 
+    //defi ne grade s0rength
+    const [A, B, C, D, E, F] = [5, 4, 3, 2, 1, 0]
     
     //TOASTS
     const showToast = () => {
@@ -66,11 +70,9 @@ export const ResultProvider = ({children}) => {
         let unClickedItems = courses.filter(course => course.id !== id);
 
         let lastId = clickedItem.map(item => item.semester.length > 0 ? item.semester[item.semester.length - 1].id : 1)
-        // let lastId = item.semester.length > 0 ? item.semester[item.semester.length - 1].id : 1;
-
 
         //push a new course field to the displayed list
-        clickedItem.forEach(item => item.semester.push({id: lastId[0] + 1, name: '', grade: 5, credits: 5, type: ''}))
+        clickedItem.forEach(item => item.semester.push({id: lastId[0] + 1, name: '', grade: 0, credits: 5, type: ''}))
 
         // log clicked item
         console.log( [...unClickedItems, ...clickedItem]);
@@ -99,15 +101,52 @@ export const ResultProvider = ({children}) => {
         let clickedParentItem = courses
             .filter(course => course.id === parentId)
 
-        let filteredItem = clickedParentItem[0].semester.filter(item => item.id !== id)
-        console.log(filteredItem);
+        //filter out the clicked item 
+        let filteredItems = clickedParentItem[0].semester.filter(item => item.id !== id)
+        console.log(filteredItems);
+
+        let gp = clickedParentItem[0].gpa
 
         //define unClicked parent items
         let unClickedItems = courses.filter(course => course.id !== parentId);
 
-        console.log({semester: filteredItem, id: parentId})
-        setCourses([...unClickedItems, {semester: filteredItem, id: parentId}])
+        console.log({semester: filteredItems,gpa: gp, id: parentId})
+        setCourses([...unClickedItems, {semester: filteredItems,gpa: gp, id: parentId}])
     }
+
+    //handle grade c0ange
+    const handleGradeChange = (e, id, parentId) => {
+        let gradePoint = parseInt(e.target.value);
+
+        let clickedParentItem = courses
+            .filter(course => course.id === parentId)
+        clickedParentItem[0].semester
+            .filter(course => course.id === id)[0].grade = gradePoint
+        
+        let unClickedParentItem = courses
+            .filter(course => course.id !== parentId)
+        
+        console.log(gradePoint, clickedParentItem);
+        setCourses([...unClickedParentItem, ...clickedParentItem])
+        console.log(courses)
+    } 
+
+    //handle units change
+    const handleUnitChange = (e, id, parentId) => {
+        let unitPoint = parseInt(e.target.value);
+
+        let clickedParentItem = courses
+            .filter(course => course.id === parentId)
+        clickedParentItem[0].semester
+            .filter(course => course.id === id)[0].credits = unitPoint
+        
+        let unClickedParentItem = courses
+            .filter(course => course.id !== parentId)
+        
+        console.log(unitPoint, clickedParentItem);
+        setCourses([...unClickedParentItem, ...clickedParentItem])
+        console.log(courses)
+    } 
 
     return(
 
@@ -117,7 +156,9 @@ export const ResultProvider = ({children}) => {
             handleAddSemester, 
             handleAddCourse, 
             handleRemoveSemester,
-            handleRemoveCourse
+            handleRemoveCourse,
+            handleGradeChange,
+            handleUnitChange
         }}>
             {children}
         </ResultContext.Provider>
