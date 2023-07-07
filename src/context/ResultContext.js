@@ -25,11 +25,11 @@ export const ResultProvider = ({children}) => {
 
     const semester = {
         semester: [
-            {id: 1, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
-            {id: 2, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
-            {id: 3, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
-            {id: 4, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
-            {id: 5, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
+            {id: 1, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 2, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 3, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 4, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 5, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
         ],
         gpa: 0.00,
         id: clickCounter
@@ -105,7 +105,7 @@ export const ResultProvider = ({children}) => {
         let filteredItems = clickedParentItem[0].semester.filter(item => item.id !== id)
         console.log(filteredItems);
 
-        let gp = clickedParentItem[0].gpa
+        let gp = clickedParentItem[0].gpa;
 
         //define unClicked parent items
         let unClickedItems = courses.filter(course => course.id !== parentId);
