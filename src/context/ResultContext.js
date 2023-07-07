@@ -6,11 +6,11 @@ export const ResultContext = createContext()
 export const ResultProvider = ({children}) => {
     const [courses, setCourses] = useState([
         {semester: [
-            {id: 1, name: '', grade: 0, credits: 5, type: ''},
-            {id: 2, name: '', grade: 0, credits: 5, type: ''},
-            {id: 3, name: '', grade: 0, credits: 5, type: ''},
-            {id: 4, name: '', grade: 0, credits: 5, type: ''},
-            {id: 5, name:'', grade: 0, credits: 5, type: ''},
+            {id: 1, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 2, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 3, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 4, name: '', grade: 0, credits: 0, type: '', courseStrength: 0},
+            {id: 5, name:'', grade: 0, credits: 0, type: '', courseStrength: 0},
         ],
         gpa: 0.00,
         id: 1
@@ -25,11 +25,11 @@ export const ResultProvider = ({children}) => {
 
     const semester = {
         semester: [
-            {id: 1, name: '', grade: 0, credits: 5, type: ''},
-            {id: 2, name: '', grade: 0, credits: 5, type: ''},
-            {id: 3, name: '', grade: 0, credits: 5, type: ''},
-            {id: 4, name: '', grade: 0, credits: 5, type: ''},
-            {id: 5, name: '', grade: 0, credits: 5, type: ''},
+            {id: 1, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
+            {id: 2, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
+            {id: 3, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
+            {id: 4, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
+            {id: 5, name: '', grade: 0, credits: 5, type: '', courseStrength: 0},
         ],
         gpa: 0.00,
         id: clickCounter
@@ -122,11 +122,19 @@ export const ResultProvider = ({children}) => {
             .filter(course => course.id === parentId)
         clickedParentItem[0].semester
             .filter(course => course.id === id)[0].grade = gradePoint
+
+        let unitPoint = parseInt(clickedParentItem[0].semester.filter(course => course.id === id)[0].credits)
+
+        clickedParentItem[0].semester.filter(course => course.id === id)[0].courseStrength = gradePoint * unitPoint
         
         let unClickedParentItem = courses
             .filter(course => course.id !== parentId)
         
         console.log(gradePoint, clickedParentItem);
+
+        //update screen gpa
+        clickedParentItem[0].gpa = calculateGP(parentId);
+        
         setCourses([...unClickedParentItem, ...clickedParentItem])
         console.log(courses)
     } 
@@ -140,13 +148,45 @@ export const ResultProvider = ({children}) => {
         clickedParentItem[0].semester
             .filter(course => course.id === id)[0].credits = unitPoint
         
+        let gradePoint = parseInt(clickedParentItem[0].semester.filter(course => course.id === id)[0].grade)
+
+        
+        clickedParentItem[0].semester.filter(course => course.id === id)[0].courseStrength = gradePoint * unitPoint
+
         let unClickedParentItem = courses
             .filter(course => course.id !== parentId)
         
-        console.log(unitPoint, clickedParentItem);
+        //grab the gpa from the screen
+        clickedParentItem[0].gpa = calculateGP(parentId);
+        
         setCourses([...unClickedParentItem, ...clickedParentItem])
+        
         console.log(courses)
     } 
+
+    //function to calculate gp
+    function calculateGP(parentId){
+        let parentItem = courses.filter(course => course.id === parentId)
+
+        //sum the course weight
+        let totalCourseWeight = 0;
+        let courseWeigth = parentItem[0].semester.map(item => item.courseStrength)
+        //sum the units weight
+        let totalUnitWeight = 0;
+        let unitWeight = parentItem[0].semester.map(item => item.credits)
+
+        courseWeigth.forEach(item => totalCourseWeight += item)
+        unitWeight.forEach(item => totalUnitWeight += item)
+
+        let gpa = parseFloat((totalCourseWeight / totalUnitWeight)).toFixed(2)
+        console.log('From gp cal, ', totalCourseWeight, totalUnitWeight, gpa)
+
+        if ( isNaN(gpa) === true){
+            return 0.00
+        }else{
+            return gpa
+        }
+    }
 
     return(
 
