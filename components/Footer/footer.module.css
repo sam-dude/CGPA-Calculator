@@ -10,12 +10,15 @@
 }
 .item{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
 .logo{
     font-weight: 600;
     font-size: 1rem;
+}
+.text{
+    text-align: left;
 }
 
 .icons{

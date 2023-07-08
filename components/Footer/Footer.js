@@ -14,7 +14,7 @@ export default function FooterWithLogo() {
       </div>
       <hr />
       <div className={styles.item}>
-        <p>Made with 💚 by <a href="#">Ibiyemi Samuel</a></p>
+        <p className={styles.text}>Made with 💚<br /> by <a href="#">Ibiyemi Samuel</a></p>
         <div className={styles.icons}>
           <Footer.Icon
             href="#"

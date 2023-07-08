@@ -14,7 +14,7 @@
     height: 80vh;
     width: 100vw;
     background-color: #e5fcf5;
-    z-index: -1;
+    z-index: -4;
     top: 0;
     left: 0;
     background-position: center;
@@ -65,8 +65,9 @@
 }
 .img{
     width: 100%;
-    height: 350px;
-    object-fit: contain;
+    height: 400px;
+    object-fit: cover;
+    z-index: -3;
     transform: translateY(-25px)
     /* animation: move 3s infinite ease alternate; */
 }
@@ -126,6 +127,8 @@
         padding-top: 1rem;
         transform: translateY(-30px) !important;
         z-index: 3;
+        object-fit: contain;
+        height: fit-content;
     }
     .toast{
         padding: 8% !important;

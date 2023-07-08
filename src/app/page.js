@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import styles from './page.module.css'
 import {motion as m} from "framer-motion"
 import Head from 'next/head'
-import headImg from '../../public/heade.png'
+import headImg from '../../public/head.gif'
 import Image from 'next/image'
 import Calculator from '@/components/Calculator/Calculator'
 import { ResultContext } from '@/src/context/ResultContext'
