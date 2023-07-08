@@ -10,11 +10,12 @@ export default function FooterWithLogo() {
     <div className={styles.container}>
       <div className={styles.item}>
         <div className={styles.logo}>GPA Calculator</div>
+        <p className={styles.text}>© 2023 <a href="#">Ibiyemi Samuel</a></p>
         
       </div>
       <hr />
       <div className={styles.item}>
-        <p className={styles.text}>Made with 💚<br /> by <a href="#">Ibiyemi Samuel</a></p>
+        <p className={styles.text}>Made with 💚 for you.</p>
         <div className={styles.icons}>
           <Footer.Icon
             href="#"

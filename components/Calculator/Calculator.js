@@ -48,7 +48,7 @@ export default function Calculator({item, id, index, gpa}){
                 }
             </div>
             <div className={styles.gp}>
-                <div className={styles.gpa}>Semester {index + 1} GPA: {parseFloat(gpa)}</div>
+                <div className={styles.gpa}>Semester {index + 1} GPA: <span style={{fontWeight: 600}}>{parseFloat(gpa)}</span></div>
                 <div className={styles.addCourse} onClick={async () => {await handleAddCourse(id)}}>Add Course</div>
             </div>
             <div className={styles.addSem}>
